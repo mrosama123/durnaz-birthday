@@ -181,6 +181,8 @@ button{ font-family:inherit; cursor:pointer; background:none; border:none; }
   text-align:center; padding: 2rem;
   background: radial-gradient(120% 100% at 50% 30%, #fffdf9 0%, var(--champagne) 60%, #eaddba 100%);
   transition: opacity 1.1s var(--ease-lux) .1s, visibility 1.1s var(--ease-lux) .1s, filter 1.1s var(--ease-lux);
+  touch-action: none;
+  overscroll-behavior: none;
 }
 .gift-gate.hide{ opacity:0; visibility:hidden; pointer-events:none; filter: blur(6px); }
 .gift-gate.ready{ opacity:1; visibility:visible; }
@@ -302,12 +304,17 @@ button{ font-family:inherit; cursor:pointer; background:none; border:none; }
    MAIN SITE
    ============================================================ */
 .main-site{
-  position:relative; z-index: 10;
+  position: fixed; inset: 0; z-index: 10;
   opacity: 0;
   visibility: hidden;
+  overflow: hidden;
+  pointer-events: none;
 }
 .main-site.show{
+  position: static;
   opacity:1; visibility:visible;
+  overflow: visible;
+  pointer-events: auto;
   transition: opacity 1.4s var(--ease-lux) .3s;
 }
 
