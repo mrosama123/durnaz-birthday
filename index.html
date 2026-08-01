@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Birthday, Durnaz 👑</title>
+<meta name="description" content="For Durnaz — Forever Yours, Osama">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loader" class="loader">
+  <div class="loader-sparkle-field" id="loaderSparkles"></div>
+  <div class="loader-crown">👑</div>
+  <div class="loader-name">Durnaz</div>
+  <div class="loader-bar-track">
+    <div class="loader-bar-fill" id="loaderBar"></div>
+  </div>
+  <div class="loader-caption" id="loaderCaption">preparing something beautiful</div>
+</div>
+
+<!-- ============ MUSIC BUTTON ============ -->
+<button id="musicToggle" class="music-btn" aria-label="Play music" title="Tujh Mein Rab Dikhta Hai">
+  <span class="music-btn-ring"></span>
+  <svg class="music-icon icon-note" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.4"/>
+  </svg>
+</button>
+<audio id="bgMusic" loop preload="none">
+  <source src="tujh-mein-rab-dikhta-hai.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ============ PARTICLE / CANVAS LAYERS (fixed, full page) ============ -->
+<canvas id="fxCanvas" class="fx-canvas"></canvas>
+<div class="ambient-field" id="ambientField"></div>
+
+<!-- ============ GIFT GATE ============ -->
+<section id="giftGate" class="gift-gate">
+  <div class="gift-gate-bg"></div>
+  <p class="gift-eyebrow">a small world, made for you</p>
+  <h1 class="gift-title">Something is waiting inside</h1>
+  <div class="gift-wrap" id="giftWrap">
+    <div class="gift-glow"></div>
+    <div class="gift-box" id="giftBox">
+      <div class="gift-lid"></div>
+      <div class="gift-body"></div>
+      <div class="ribbon-v"></div>
+      <div class="ribbon-h"></div>
+      <div class="ribbon-bow">
+        <span></span><span></span>
+        <div class="ribbon-bow-knot"></div>
+      </div>
+    </div>
+  </div>
+  <p class="gift-hint">tap the box</p>
+</section>
+
+<!-- ============ MAIN SITE (revealed after gift opens) ============ -->
+<main id="mainSite" class="main-site">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-frame">
+      <p class="hero-eyebrow">est. the day you were born</p>
+      <h1 class="hero-title">
+        Happy Birthday<br><span class="hero-title-gold">Princess Durnaz</span> <span class="crown-emoji">👑</span>
+      </h1>
+      <p class="hero-nickname">— my Dodoo —</p>
+
+      <div class="hero-message" id="heroMessage" aria-live="polite"></div>
+
+      <div class="hero-scroll-cue">
+        <span>scroll for more</span>
+        <div class="hero-scroll-line"><div class="hero-scroll-dot"></div></div>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="hero-portrait-frame">
+        <img src="images/photo-3.jpeg" alt="Durnaz" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE STRIP -->
+  <section class="quote-strip reveal">
+    <p>"Some people paint with color.<br class="br-mobile"> You paint with light."</p>
+    <span class="quote-attribution">— Osama, on Durnaz</span>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section reveal" id="gallery">
+    <p class="section-eyebrow">memory, framed</p>
+    <h2 class="section-title">Moments With You</h2>
+
+    <div class="gallery-grid">
+      <figure class="gallery-card gallery-card--tall reveal" data-index="0">
+        <div class="gallery-card-inner">
+          <img src="images/photo-1.jpeg" alt="Osama and Durnaz together" loading="lazy">
+          <div class="gallery-card-shine"></div>
+        </div>
+        <figcaption>us, under the trees</figcaption>
+      </figure>
+
+      <figure class="gallery-card reveal" data-index="1">
+        <div class="gallery-card-inner">
+          <img src="images/photo-2.jpeg" alt="Durnaz" loading="lazy">
+          <div class="gallery-card-shine"></div>
+        </div>
+        <figcaption>quiet golden evenings</figcaption>
+      </figure>
+
+      <figure class="gallery-card reveal" data-index="2">
+        <div class="gallery-card-inner">
+          <img src="images/photo-3.jpeg" alt="Durnaz" loading="lazy">
+          <div class="gallery-card-shine"></div>
+        </div>
+        <figcaption>my favourite face</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- LETTER SECTION -->
+  <section class="letter-section reveal">
+    <div class="letter-card">
+      <p class="letter-mark">✦</p>
+      <p class="letter-body">
+        Durnaz, every year the world gives you a birthday, but I get something better —
+        another year of knowing you. You make ordinary Tuesdays feel like something
+        worth remembering. I don't say it enough, so let this whole little page say it
+        for me: you are loved, completely and on purpose, today and every day after.
+      </p>
+      <p class="letter-sign">— Osama</p>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <section class="finale-section" id="finale">
+    <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+    <div class="finale-content">
+      <button class="finale-trigger" id="finaleTrigger">
+        <span>make a wish</span>
+      </button>
+      <div class="finale-heart-wrap" id="finaleHeartWrap">
+        <div class="finale-heart" id="finaleHeart">💛</div>
+        <div class="finale-reveal" id="finaleReveal">
+          <p class="finale-forever">Forever Yours,</p>
+          <p class="finale-osama">Osama <span>❤️</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+  <div class="lightbox-stage">
+    <img src="" alt="" id="lightboxImg">
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
