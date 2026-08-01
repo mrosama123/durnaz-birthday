@@ -263,6 +263,21 @@
     }, 900);
   }
 
+  // require a clean, deliberate tap (not a scroll/drag) before opening
+  let touchStartX = 0, touchStartY = 0, touchMoved = false;
+  giftBox.addEventListener("touchstart", (e) => {
+    const t = e.touches[0];
+    touchStartX = t.clientX; touchStartY = t.clientY; touchMoved = false;
+  }, { passive: true });
+  giftBox.addEventListener("touchmove", (e) => {
+    const t = e.touches[0];
+    if (Math.abs(t.clientX - touchStartX) > 10 || Math.abs(t.clientY - touchStartY) > 10) {
+      touchMoved = true;
+    }
+  }, { passive: true });
+  giftBox.addEventListener("touchend", () => {
+    if (!touchMoved) openGift();
+  });
   giftBox.addEventListener("click", openGift);
   giftBox.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openGift(); }
@@ -271,8 +286,11 @@
   giftBox.setAttribute("role", "button");
   giftBox.setAttribute("aria-label", "Open your gift");
 
-  // lock scroll until gift opens
+  // lock scroll until gift opens — block all scroll/touchmove on the gate itself
   document.body.style.overflow = "hidden";
+  giftGate.addEventListener("touchmove", (e) => {
+    if (!giftOpened) e.preventDefault();
+  }, { passive: false });
 
   /* ---------------------------------------------------------
      5. TYPEWRITER HERO MESSAGE
