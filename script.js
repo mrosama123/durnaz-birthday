@@ -260,6 +260,11 @@
       document.body.style.overflow = "auto";
       startTypewriter();
       initScrollReveal();
+      // force-remove the gate from the render tree once its fade is done,
+      // so it can never get stuck mid-transition on any device
+      setTimeout(() => {
+        giftGate.style.display = "none";
+      }, 1300);
     }, 900);
   }
 
