@@ -184,7 +184,7 @@ button{ font-family:inherit; cursor:pointer; background:none; border:none; }
   touch-action: none;
   overscroll-behavior: none;
 }
-.gift-gate.hide{ opacity:0; visibility:hidden; pointer-events:none; filter: blur(6px); }
+.gift-gate.hide{ opacity:0; visibility:hidden; pointer-events:none; }
 .gift-gate.ready{ opacity:1; visibility:visible; }
 .gift-gate:not(.ready){ opacity:0; visibility:hidden; }
 
